@@ -83,6 +83,7 @@ nombre_buscar = input("Ingrese el nombre del producto a buscar: ")
 encontrado = False
 # Buscar en la lista de productos
 for producto in productos:
+    # Compara ignorando mayúsculas/minúsculas
     if producto["nombre"].lower() == nombre_buscar.lower():
         print(f"Producto encontrado: Nombre: {producto['nombre']}, Precio: ${producto['precio']}, Cantidad: {producto['cantidad']}")
         encontrado = True
