@@ -168,7 +168,9 @@ def contar_digito(numero, digito):
         return 0
     else:
         cuenta = 1 if numero % 10 == digito else 0
+        
         return cuenta + contar_digito(numero // 10, digito) 
+    # Solicitar número y dígito al usuario
 num = int(input("Ingrese un número entero positivo: "))
 dig = int(input("Ingrese un dígito (0-9) para contar en el número: "))
 
