@@ -30,8 +30,11 @@ with open("productos.txt", "w") as archivo:
 #línea, la procese con .strip() y .split(","), y muestre los productos en el siguiente
 #formato:
 #Producto: Lapicera | Precio: $120.5 | Cantidad: 30
+
+#
 with open("productos.txt", "r") as archivo:
     lineas = archivo.readlines()
+    #
     for linea in lineas:
         nombre, precio, cantidad = linea.strip().split(",")
         print(f"Producto: {nombre} | Precio: ${precio} | Cantidad: {cantidad}")
@@ -42,6 +45,7 @@ with open("productos.txt", "r") as archivo:
 #cantidad) y lo agregue al archivo sin borrar el contenido existente.
 
 nuevo_producto = input("Ingrese un nuevo producto (nombre,precio,cantidad) separado por comas: ")
+# Agregar al archivo
 with open("productos.txt", "a") as archivo:
     archivo.write(nuevo_producto + "\n")
 
@@ -49,9 +53,13 @@ with open("productos.txt", "a") as archivo:
 #4. Cargar productos en una lista de diccionarios: Al leer el archivo, cargar los datos en
 #una lista llamada productos, donde cada elemento sea un diccionario con claves:
 #nombre, precio, cantidad.
+
+# Crear lista de productos
 productos = []
+#
 with open("productos.txt", "r") as archivo: 
     lineas = archivo.readlines()
+    # Procesa cada línea y agregar a la lista como diccionario
     for linea in lineas:
         nombre, precio, cantidad = linea.strip().split(",")
         producto = {
@@ -69,8 +77,11 @@ for producto in productos:
 #5. Buscar producto por nombre: Pedir al usuario que ingrese el nombre de un
 #producto. Recorrer la lista de productos y, si lo encuentra, mostrar todos sus datos. Si
 #no existe, mostrar un mensaje de error.
+
+#Pide el nombre del producto a buscar
 nombre_buscar = input("Ingrese el nombre del producto a buscar: ")
 encontrado = False
+# Buscar en la lista de productos
 for producto in productos:
     if producto["nombre"].lower() == nombre_buscar.lower():
         print(f"Producto encontrado: Nombre: {producto['nombre']}, Precio: ${producto['precio']}, Cantidad: {producto['cantidad']}")
@@ -83,19 +94,10 @@ if not encontrado:
 #6. Guardar los productos actualizados: Después de haber leído, buscado o agregado
 #productos, sobrescribir el archivo productos.txt escribiendo nuevamente todos los
 #productos actualizados desde la lista.
+
+# Sobrescribe el archivo con los productos actualizados
 with open("productos.txt", "w") as archivo:
+    # Sobrescribir con los productos actualizados
     for producto in productos:
         linea = f"{producto['nombre']},{producto['precio']},{producto['cantidad']}\n"
         archivo.write(linea)
-
-
-#Consejo final:
-#Antes de empezar, analizá cada problema y pensá cómo dividirlo en partes:
-#● Leer archivo
-#● Procesar datos
-#● Mostrar o actualizar información
-#● Guardar los cambios
-#Al terminar, probá tu programa varias veces:
-#● ¿Se puede agregar más de un producto?
-#● ¿Se guarda todo correctamente?
-#● ¿Se muestra bien el resultado?
